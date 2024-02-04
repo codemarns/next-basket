@@ -5,7 +5,7 @@ export const StarRatingReview = () => {
   return (
     <div className="flex items-center gap-3">
       <div className="flex items-center gap-1">
-        {[...Array(4)].map((index) => {
+        {[...Array(4)].map((_, index) => {
           return (
             <FaStar
               key={index + 1}
