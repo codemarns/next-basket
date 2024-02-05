@@ -51,6 +51,15 @@ export const Card: React.FC<CardProps> = (props) => {
           className="h-full w-full object-cover invert-[.025]"
         />
 
+        {/* out-of-stock overlay */}
+        {hoverProduct && props.stock === 0 && (
+          <div className="absolute inset-0 bg-white/50 flex items-center justify-center">
+            <span className="bg-black/85 text-white px-3 py-1">
+              Out of Stock
+            </span>
+          </div>
+        )}
+
         <span
           className={cn(
             "cursor-auto pointer-events-none select-none absolute bottom-4 left-4 font-bold bg-white px-3 py-0.5 rounded-full text-sm shadow-[0_3px_10px_-5px_rgba(0,0,0,0.15)]",
