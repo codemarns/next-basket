@@ -2,7 +2,7 @@
 
 import cn from "classnames";
 import Image from "next/image";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { FaRegHeart } from "react-icons/fa";
 import { RxMixerVertical } from "react-icons/rx";
 import { Dialog } from "@/app/components/Dialog";
@@ -13,6 +13,12 @@ import { CardProps } from "./types";
 export const Card: React.FC<CardProps> = (props) => {
   const [showModal, setShowModal] = useState(false);
   const [hoverProduct, setHoverProduct] = useState(false);
+
+  // disable the body scroll if modal is open
+  useEffect(() => {
+    const body = document.querySelector("body");
+    body!.style.overflow = showModal ? "hidden" : "scroll";
+  }, [showModal]);
 
   return (
     <div
@@ -64,17 +70,26 @@ export const Card: React.FC<CardProps> = (props) => {
 
       <div className="space-y-3 p-5">
         <div>
-          <span className="block text-sm text-slate-500 line-clamp-1">
+          <span className="text-sm text-slate-500 leading-tight line-clamp-1">
             {props.brand}
           </span>
-          <span className="block text-lg font-bold line-clamp-1">
-            {props.title}
-          </span>
+          <span className="text-lg font-bold line-clamp-1">{props.title}</span>
         </div>
 
-        <span className="block text-lg font-bold">€ {props.price}</span>
+        <div className="flex items-center gap-3">
+          <span className="text-lg text-slate-500 line-through">
+            € {props.price}
+          </span>
+          <span className="text-lg font-bold">€ {finalPrice}</span>
+        </div>
 
-        <StarRatingReview />
+        <div className="flex items-center gap-3">
+          <StarRatingReview rating={props.rating} />
+          <span
+            title="stocks"
+            className="text-slate-500"
+          >{`(${props.stock})`}</span>
+        </div>
 
         <div className="!mt-5">
           <Button
