@@ -17,7 +17,7 @@ export const Card: React.FC<CardProps> = (props) => {
   // disable the body scroll if modal is open
   useEffect(() => {
     const body = document.querySelector("body");
-    body!.style.overflow = showModal ? "hidden" : "scroll";
+    body!.style.overflow = showModal ? "hidden" : "auto";
   }, [showModal]);
 
   // convert the discountPercentage into decimal
