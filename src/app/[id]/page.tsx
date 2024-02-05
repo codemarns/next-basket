@@ -1,6 +1,3 @@
-import Link from "next/link";
-import { FaArrowLeft } from "react-icons/fa";
-
 export default function Product() {
   return (
     <>
