@@ -20,6 +20,21 @@ export const Card: React.FC<CardProps> = (props) => {
     body!.style.overflow = showModal ? "hidden" : "scroll";
   }, [showModal]);
 
+  // convert the discountPercentage into decimal
+  const discount = props.discountPercentage / 100;
+
+  // multiply the discount to the price to get the discount amount
+  const discountAmount = discount * props.price;
+
+  // subtract the discount amount to the price to get the discounted price
+  const discountedPrice = props.price - discountAmount;
+
+  // round up the new price
+  const newPrice = Math.round(discountedPrice * 100) / 100;
+
+  // to have fixed 2 decimals
+  const finalPrice = newPrice.toFixed(2);
+
   return (
     <div
       className="CARD w-full bg-white rounded-2xl shadow-[0_35px_60px_-45px_rgba(0,0,0,0.15)] overflow-hidden"
