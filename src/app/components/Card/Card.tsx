@@ -109,10 +109,12 @@ export const Card: React.FC<CardProps> = (props) => {
 
         <div className="flex items-center gap-3">
           <StarRatingReview rating={props.rating} />
-          <span
-            title="stocks"
-            className="text-slate-500"
-          >{`(${props.stock})`}</span>
+          {props.stock > 0 && (
+            <span
+              title="stocks"
+              className="text-slate-500"
+            >{`(${props.stock})`}</span>
+          )}
         </div>
 
         <div className="!mt-5">
