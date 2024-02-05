@@ -41,14 +41,14 @@ export const Card: React.FC<CardProps> = (props) => {
       onMouseEnter={() => setHoverProduct(true)}
       onMouseLeave={() => setHoverProduct(false)}
     >
-      <div className="relative">
+      <div className="relative h-[280px] w-full">
         <Image
           priority
           width={300}
           height={300}
           alt="Product Item"
           src={hoverProduct ? props.images[0] : props.thumbnail}
-          className="h-[280px] w-full object-cover invert-[.025]"
+          className="h-full w-full object-cover invert-[.025]"
         />
 
         <span
