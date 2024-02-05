@@ -15,6 +15,7 @@ export const Button: React.FC<ButtonProps> = (props) => {
     layout = "auto",
     variant = "solid",
     corner = "soft-edge",
+    disabled = false,
     onClick,
   } = props;
 
@@ -23,12 +24,16 @@ export const Button: React.FC<ButtonProps> = (props) => {
       {...props}
       id={id}
       type={type}
+      disabled={disabled}
       className={cn(
         className,
         styles.base,
         styles.layout[layout],
         styles.corner[corner],
-        styles.variant[variant],
+        styles.variant[variant].base,
+        disabled
+          ? [styles.cursor.disabled, styles.variant[variant].disabled]
+          : [styles.cursor.default, styles.variant[variant].default],
         icon ? styles.padding.iconOnly : styles.padding.default
       )}
       onClick={onClick}
