@@ -117,6 +117,7 @@ export const Card: React.FC<CardProps> = (props) => {
 
         <div className="!mt-5">
           <Button
+            disabled={props.stock === 0}
             layout="block"
             variant="outline"
             label="ADD TO CART"
