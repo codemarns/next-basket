@@ -11,7 +11,7 @@ type DialogProps = {
 };
 
 export const Dialog: React.FC<DialogProps> = (props) => {
-  const { header = "", message = "", isOpen = false, onClose } = props;
+  const { header, message, isOpen = false, onClose } = props;
 
   if (!isOpen) return null;
 
