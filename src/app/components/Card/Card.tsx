@@ -6,7 +6,6 @@ import { useRouter } from "next/navigation";
 import React, { useEffect, useState } from "react";
 import { FaRegHeart } from "react-icons/fa";
 import { RxMixerVertical } from "react-icons/rx";
-import { Dialog } from "@/app/components/Dialog";
 import { Button } from "@/app/components/Button/Button";
 import { StarRatingReview } from "@/app/components/StarRatingReview";
 import { CardProps } from "./types";
