@@ -39,7 +39,7 @@ export const Card: React.FC<CardProps> = (props) => {
 
   return (
     <div
-      className="CARD w-full bg-white rounded-2xl shadow-[0_35px_60px_-45px_rgba(0,0,0,0.15)] overflow-hidden"
+      className="CARD cursor-pointer w-full bg-white rounded-2xl shadow-[0_35px_60px_-45px_rgba(0,0,0,0.15)] overflow-hidden"
       onMouseEnter={() => setHoverProduct(true)}
       onMouseLeave={() => setHoverProduct(false)}
       onClick={() => router.push(`/${props.id}`)}
