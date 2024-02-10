@@ -2,6 +2,7 @@
 
 import cn from "classnames";
 import Image from "next/image";
+import { useRouter } from "next/navigation";
 import React, { useEffect, useState } from "react";
 import { FaRegHeart } from "react-icons/fa";
 import { RxMixerVertical } from "react-icons/rx";
@@ -11,7 +12,8 @@ import { StarRatingReview } from "@/app/components/StarRatingReview";
 import { CardProps } from "./types";
 
 export const Card: React.FC<CardProps> = (props) => {
-  const [showModal, setShowModal] = useState(false);
+  const router = useRouter();
+
   const [hoverProduct, setHoverProduct] = useState(false);
 
   // disable the body scroll if modal is open
@@ -40,6 +42,7 @@ export const Card: React.FC<CardProps> = (props) => {
       className="CARD w-full bg-white rounded-2xl shadow-[0_35px_60px_-45px_rgba(0,0,0,0.15)] overflow-hidden"
       onMouseEnter={() => setHoverProduct(true)}
       onMouseLeave={() => setHoverProduct(false)}
+      onClick={() => router.push(`/${props.id}`)}
     >
       <div className="relative h-[280px] w-full">
         <Image
