@@ -1,4 +1,4 @@
-export type CardProps = {
+export type ProductProps = {
   id: string;
   images: string[];
   thumbnail: string;
@@ -10,4 +10,8 @@ export type CardProps = {
   price: number;
   rating: number;
   stock: number;
+};
+
+export type CardProps = ProductProps & {
+  onAddToCart?: (props: ProductProps) => void;
 };
