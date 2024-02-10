@@ -1,28 +1,62 @@
-import Link from "next/link";
+"use client";
+
+import { useEffect, useState } from "react";
+import { getProducts } from "@/app/api/api";
 import { Card } from "@/app/components/Card/Card";
-import { CardProps } from "@/app/components/Card/types";
+import { ProductProps } from "@/app/components/Card/types";
+import { Dialog } from "@/app/components/Dialog/Dialog";
 
-async function getProducts() {
-  // fetch request from API
-  const res = await fetch("https://dummyjson.com/products");
-  // returns a promise which resolves with the result of parsing the body text as JSON
-  const data = res.json();
+const Home = () => {
+  const [showDialog, setShowDialog] = useState(false);
+  const [products, setProducts] = useState<ProductProps[]>([]);
+  const [addedToCartProduct, setAddedToCartProduct] = useState<ProductProps | null>(null);
 
-  return data;
-}
+  useEffect(() => {
+    getProducts()
+      .then((res) => res.json())
+      .then((data) => setProducts(data?.products))
+      .catch((error) => console.error(error));
+  }, []);
 
-export default async function Home() {
-  const data = await getProducts();
+  // disable the body scroll if dialog is open
+  useEffect(() => {
+    const body = document.querySelector("body");
+    body!.style.overflow = showDialog ? "hidden" : "auto";
+  }, [showDialog]);
+
+  const handleShowDialog = (props: ProductProps) => {
+    setAddedToCartProduct(props);
+    setShowDialog(true);
+  };
+
+  const handleHideDialog = () => {
+    setAddedToCartProduct(null);
+    setShowDialog(false);
+  };
+
+  console.log("showDialog: ", showDialog);
+  console.log("addedToCartProduct: ", addedToCartProduct);
 
   return (
     <div className="grid grid-cols-[repeat(auto-fit,_minmax(285px,_1fr))] gap-4 sm:gap-8">
-      {data?.products.map((product: CardProps, index: number) => {
-        return (
-          <Link href={`/${product.id}`} key={index}>
-            <Card {...product} />
-          </Link>
-        );
-      })}
+      {products.map((product: ProductProps, index: number) => (
+        <Card
+          key={index}
+          {...product}
+          onAddToCart={(props: ProductProps) => {
+            handleShowDialog(props);
+          }}
+        />
+      ))}
+
+      <Dialog
+        isOpen={showDialog}
+        header="Awesome!"
+        message="Added to cart successfully."
+        onClose={handleHideDialog}
+      />
     </div>
   );
-}
+};
+
+export default Home;
