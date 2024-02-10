@@ -1,17 +1,20 @@
 import React from "react";
 import { FaCheck } from "react-icons/fa";
-import { Portal } from "./Portal";
-import { Button } from "./Button/Button";
-import { ButtonProps } from "./Button/types";
+import { Button } from "../Button/Button";
+import { Portal } from "../Portal";
 
-type DialogProps = Pick<ButtonProps, "onClick"> & {
-  header: string;
-  message: string;
-  // onClose: () => void;
+type DialogProps = {
+  header?: string;
+  message?: string;
+  isOpen?: boolean;
+  onClose?: () => void;
 };
 
 export const Dialog: React.FC<DialogProps> = (props) => {
-  const { header = "", message = "", onClick } = props;
+  const { header = "", message = "", isOpen = false, onClose } = props;
+
+  if (!isOpen) return null;
+
   return (
     <Portal>
       <div className="fixed inset-0 p-4 bg-black/30 flex items-center justify-center">
@@ -29,7 +32,7 @@ export const Dialog: React.FC<DialogProps> = (props) => {
             layout="block"
             variant="solid"
             corner="rounded"
-            onClick={onClick}
+            onClick={onClose}
           />
         </div>
       </div>
