@@ -133,19 +133,6 @@ export const Card: React.FC<CardProps> = (props) => {
             }}
           />
         </div>
-
-        {/* Dialog will show as Portal */}
-        {showModal && (
-          <Dialog
-            header="Awesome!"
-            message="Added to cart successfully."
-            onClick={(e) => {
-              e.preventDefault();
-              e.stopPropagation();
-              setShowModal(false);
-            }}
-          />
-        )}
       </div>
     </div>
   );
