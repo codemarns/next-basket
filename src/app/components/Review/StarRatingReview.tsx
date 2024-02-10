@@ -2,7 +2,7 @@
 
 import React from "react";
 import { FaStar } from "react-icons/fa";
-import { ProductProps } from "./Card/types";
+import { ProductProps } from "../Card/types";
 
 type RatingProps = Pick<ProductProps, "rating">;
 
