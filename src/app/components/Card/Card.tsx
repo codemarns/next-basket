@@ -129,7 +129,7 @@ export const Card: React.FC<CardProps> = (props) => {
             onClick={(e) => {
               e.preventDefault();
               e.stopPropagation();
-              setShowModal(true);
+              props?.onAddToCart!(props);
             }}
           />
         </div>
