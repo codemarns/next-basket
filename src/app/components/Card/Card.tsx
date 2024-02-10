@@ -3,7 +3,7 @@
 import cn from "classnames";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { FaRegHeart } from "react-icons/fa";
 import { RxMixerVertical } from "react-icons/rx";
 import { Button } from "@/app/components/Button/Button";
