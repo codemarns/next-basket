@@ -1,7 +1,7 @@
 import React from "react";
 import { FaCheck } from "react-icons/fa";
 import { Button } from "../Button/Button";
-import { Portal } from "../Portal";
+import { Portal } from "../Portal/Portal";
 
 type DialogProps = {
   header?: string;
