@@ -7,7 +7,7 @@ import React, { useState } from "react";
 import { FaRegHeart } from "react-icons/fa";
 import { RxMixerVertical } from "react-icons/rx";
 import { Button } from "@/app/components/Button/Button";
-import { StarRatingReview } from "@/app/components/StarRatingReview";
+import { StarRatingReview } from "@/app/components/Review/StarRatingReview";
 import { CardProps } from "./types";
 
 export const Card: React.FC<CardProps> = (props) => {
