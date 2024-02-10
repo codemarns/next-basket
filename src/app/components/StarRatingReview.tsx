@@ -2,9 +2,9 @@
 
 import React from "react";
 import { FaStar } from "react-icons/fa";
-import { CardProps } from "./Card/types";
+import { ProductProps } from "./Card/types";
 
-type RatingProps = Pick<CardProps, "rating">;
+type RatingProps = Pick<ProductProps, "rating">;
 
 export const StarRatingReview: React.FC<RatingProps> = ({ rating }) => {
   // return null if it has no ratings
